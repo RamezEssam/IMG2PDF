@@ -36,6 +36,58 @@ static bool parse_cl_args(int argc, char** argv) {
 }
 
 
+static bool run() {
+    ImagePDFWriter writer;
+
+    switch (detect_image_format(std::string(img_path))) {
+
+    case ImageFormat::JPEG:
+        writer = ImagePDFWriter(img_path, ImageFormat::JPEG);
+        if (!writer.Write(pdf_path)) {
+            return false;
+        }
+        break;
+    case ImageFormat::PNG:
+        writer = ImagePDFWriter(img_path, ImageFormat::PNG);
+        if (!writer.Write(pdf_path)) {
+            return false;
+        }
+        break;
+    case ImageFormat::BMP:
+        writer = ImagePDFWriter(img_path, ImageFormat::BMP);
+        if (!writer.Write(pdf_path)) {
+            return false;
+        }
+        break;
+    case ImageFormat::GIF:
+        writer = ImagePDFWriter(img_path, ImageFormat::GIF);
+        if (!writer.Write(pdf_path)) {
+            return false;
+        }
+        break;
+    case ImageFormat::WEBP:
+        writer = ImagePDFWriter(img_path, ImageFormat::WEBP);
+        if (!writer.Write(pdf_path)) {
+            return false;
+        }
+        break;
+    case ImageFormat::TIFF:
+        writer = ImagePDFWriter(img_path, ImageFormat::TIFF);
+        if (!writer.Write(pdf_path)) {
+            return false;
+        }
+        break;
+    case ImageFormat::UNKNOWN:
+        std::cout << "Unkwon Format" << "\n";
+        return false;
+        break;
+    default:
+        return false;
+        break;
+    }
+}
+
+
 int main(int argc, char** argv) {
 
     // Command line arguments parsing
@@ -44,10 +96,9 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    ImagePDFWriter writer = ImagePDFWriter(img_path, ImageType::JPEG);
-    if (!writer.Write(pdf_path)) {
+    if (!run()) {
         return 1;
     }
-
+    
     return 0;
 }

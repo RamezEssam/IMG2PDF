@@ -4,15 +4,13 @@
 #include <fstream>
 #include <iostream>
 #include <iomanip>
+#include "img_format.h"
 
-// TODO: Add support for other image formats
-enum class ImageType {
-	JPEG
-};
+
 
 class ImagePDFWriter {
 private:
-	ImageType img_type;
+	ImageFormat img_type;
 	std::vector<unsigned char> img_data;
 	std::vector<long> offsets;
 	long img_size;
@@ -22,8 +20,10 @@ private:
 	bool ok;
 	void add_offset(std::ofstream* out);
 	bool WriteJPEG(char* pdf_path);
+	bool WritePNG(char* pdf_path);
 public:
-	ImagePDFWriter(char* img_path, ImageType img_type);
+	ImagePDFWriter();
+	ImagePDFWriter(char* img_path, ImageFormat img_type);
 	bool Write(char* pdf_path);
 
 };
