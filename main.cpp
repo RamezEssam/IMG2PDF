@@ -70,7 +70,7 @@ static bool run() {
         return false;
         break;
     case ImageFormat::UNKNOWN:
-        std::cout << "Unkwon Format" << "\n";
+        std::cerr << "Unkwon Format" << "\n";
         return false;
         break;
     default:
