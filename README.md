@@ -11,7 +11,7 @@ It’s designed for simplicity, portability, and educational clarity — showing
 ---
 
 ## ✅ Features
-- 📄 Converts **JPEG images** directly into a valid PDF (embedded without re-encoding).  
+- 📄 Converts **JPEG & PNG images** directly into a valid PDF (embedded without re-encoding).  
 - 🧠 Uses `stb_image` for image metadata (width, height, channels).  
 - 🧱 Minimal and portable C++ code — no external PDF libraries required.  
 - ⚡ Fast and lightweight (~a few hundred lines of code).  
@@ -52,7 +52,7 @@ Ensure that `stb_image.h` is in the include path.
 
 ## ⚙️ How It Works
 1. The tool uses `stbi_info()` from **stb_image** to read image metadata (width, height, color channels).  
-2. For **JPEG files**, it reads the raw binary data directly.  
+2. For **JPEG & PNG files**, it reads the raw binary data directly.  
 3. The program writes a simple PDF structure consisting of:
    - Catalog and Page tree  
    - Image XObject (using `/Filter /DCTDecode` for JPEG)  
@@ -84,7 +84,7 @@ xref
 ---
 
 ## 🧠 Future Improvements
-- [ ] Add **PNG support** (decode + embed raw pixels or recompress to JPEG).  
+- [ ] Add Support for other image formats.  
 - [ ] Support **multiple images per PDF** (multi-page).  
 - [ ] Add PDF **metadata** (title, author, creation date).  
 - [ ] Improve **error handling** and **logging**.  
