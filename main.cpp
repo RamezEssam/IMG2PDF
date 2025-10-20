@@ -54,28 +54,20 @@ static bool run() {
         }
         break;
     case ImageFormat::BMP:
-        writer = ImagePDFWriter(img_path, ImageFormat::BMP);
-        if (!writer.Write(pdf_path)) {
-            return false;
-        }
+        std::cerr << ImageFormat::BMP << " format currently not supported";
+        return false;
         break;
     case ImageFormat::GIF:
-        writer = ImagePDFWriter(img_path, ImageFormat::GIF);
-        if (!writer.Write(pdf_path)) {
-            return false;
-        }
+        std::cerr << ImageFormat::GIF << " format currently not supported";
+        return false;
         break;
     case ImageFormat::WEBP:
-        writer = ImagePDFWriter(img_path, ImageFormat::WEBP);
-        if (!writer.Write(pdf_path)) {
-            return false;
-        }
+        std::cerr << ImageFormat::WEBP << " format currently not supported";
+        return false;
         break;
     case ImageFormat::TIFF:
-        writer = ImagePDFWriter(img_path, ImageFormat::TIFF);
-        if (!writer.Write(pdf_path)) {
-            return false;
-        }
+        std::cerr << ImageFormat::TIFF << " format currently not supported";
+        return false;
         break;
     case ImageFormat::UNKNOWN:
         std::cout << "Unkwon Format" << "\n";
